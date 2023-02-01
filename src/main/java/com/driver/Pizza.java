@@ -11,6 +11,7 @@ public class Pizza {
     private Boolean isExtraCheese;
     private Boolean isExtraToppings;
     private Boolean isTakeAway;
+    private Boolean isBillGenerated;
 
 
 
@@ -19,6 +20,7 @@ public class Pizza {
         this.isExtraCheese = false;
         this.isExtraToppings = false;
         this.isTakeAway = false;
+        this.isBillGenerated = false;
         this.bill = "";
 
         if(isVeg)
@@ -60,20 +62,22 @@ public class Pizza {
     public void addTakeaway(){
         if(!isTakeAway)
         {
-            this.price+=this.Bagage;
+            this.price+=Bagage;
             isTakeAway=true;
         }
     }
 
     public String getBill(){
-        if(isExtraCheese)
-            this.bill+= "Extra Cheese Added: "+this.Cheese+"\n";
-        if(isExtraToppings)
-            this.bill+= "Extra Toppings Added: "+this.Toppings+"\n";
-        if(isTakeAway)
-            this.bill+= "Paperbag Added: "+this.Bagage+"\n";
-        this.bill+= "Total Price: "+this.price+"\n";
-
+        if(!isBillGenerated) {
+            if (isExtraCheese)
+                this.bill += "Extra Cheese Added: " + this.Cheese + "\n";
+            if (isExtraToppings)
+                this.bill += "Extra Toppings Added: " + this.Toppings + "\n";
+            if (isTakeAway)
+                this.bill += "Paperbag Added: " + this.Bagage + "\n";
+            this.bill += "Total Price: " + this.price + "\n";
+            isBillGenerated = true;git
+        }
         return this.bill;
     }
 }
